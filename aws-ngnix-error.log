@@ -1,0 +1,1847 @@
+Linux ip-172-26-0-172 5.10.0-23-cloud-amd64 #1 SMP Debian 5.10.179-1 (2023-05-12) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+       ___ _ _                   _
+      | _ |_) |_ _ _  __ _ _ __ (_)
+      | _ \ |  _| ' \/ _` | '  \| |
+      |___/_|\__|_|_|\__,_|_|_|_|_|
+  
+  *** Welcome to the NGINX Open Source packaged by Bitnami 1.23.4-13     ***
+  *** Documentation:  https://docs.bitnami.com/aws/infrastructure/nginx/ ***
+  ***                 https://docs.bitnami.com/aws/                      ***
+  *** Bitnami Forums: https://github.com/bitnami/vms/                    ***
+Last login: Tue Sep 26 15:17:02 2023 from 185.5.48.35
+bitnami@ip-172-26-0-172:~$ sudo nginx -t
+nginx: the configuration file /opt/bitnami/nginx/conf/nginx.conf syntax is ok
+nginx: configuration file /opt/bitnami/nginx/conf/nginx.conf test is successful
+bitnami@ip-172-26-0-172:~$ sudo service nginx restart
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xe" for details.
+bitnami@ip-172-26-0-172:~$ sudo /opt/bitnami/ctlscript.sh stop
+Stoping services..
+bitnami@ip-172-26-0-172:~$ sudo service nginx restart
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xe" for details.
+bitnami@ip-172-26-0-172:~$ cd /etc/nginx/sites-available
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ ls
+default  default.old
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo mv default default.old-2
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo mv default.old default
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo /opt/bitnami/ctlscript.sh stop
+Stoping services..
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo service nginx restart
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ systemctl status nginx.service
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2023-09-26 18:26:05 UTC; 18s ago
+       Docs: man:nginx(8)
+    Process: 20118 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 20119 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+   Main PID: 20120 (nginx)
+      Tasks: 3 (limit: 4623)
+     Memory: 3.1M
+        CPU: 45ms
+     CGroup: /system.slice/nginx.service
+             ├─20120 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+             ├─20121 nginx: worker process
+             └─20122 nginx: worker process
+
+Sep 26 18:26:05 ip-172-26-0-172 systemd[1]: Starting A high performance web server and a reverse proxy server...
+Sep 26 18:26:05 ip-172-26-0-172 systemd[1]: Started A high performance web server and a reverse proxy server.
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo nano default
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo service nginx restart
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xe" for details.
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo /opt/bitnami/ctlscript.sh stop
+Stoping services..
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo service nginx restart
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xe" for details.
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo nano default
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo service nginx restart
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xe" for details.
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo /opt/bitnami/ctlscript.sh stop
+Stoping services..
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo service nginx restart
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xe" for details.
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ systemctl status nginx.service
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+     Active: failed (Result: exit-code) since Tue 2023-09-26 18:31:03 UTC; 7s ago
+       Docs: man:nginx(8)
+    Process: 20198 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=1/FAILURE)
+        CPU: 15ms
+
+Sep 26 18:31:03 ip-172-26-0-172 systemd[1]: Starting A high performance web server and a reverse proxy server...
+Sep 26 18:31:03 ip-172-26-0-172 nginx[20198]: nginx: [emerg] no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/default:23
+Sep 26 18:31:03 ip-172-26-0-172 nginx[20198]: nginx: configuration file /etc/nginx/nginx.conf test failed
+Sep 26 18:31:03 ip-172-26-0-172 systemd[1]: nginx.service: Control process exited, code=exited, status=1/FAILURE
+Sep 26 18:31:03 ip-172-26-0-172 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Sep 26 18:31:03 ip-172-26-0-172 systemd[1]: Failed to start A high performance web server and a reverse proxy server.
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo /opt/bitnami/ctlscript.sh restart
+Restarting services..
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ cat /opt/bitnami/nginx/conf/nginx.conf
+# Based on https://www.nginx.com/resources/wiki/start/topics/examples/full/#nginx-conf
+user              daemon daemon;  ## Default: nobody
+
+worker_processes  auto;
+error_log         "/opt/bitnami/nginx/logs/error.log";
+pid               "/opt/bitnami/nginx/tmp/nginx.pid";
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    log_format    main '$remote_addr - $remote_user [$time_local] '
+                       '"$request" $status  $body_bytes_sent "$http_referer" '
+                       '"$http_user_agent" "$http_x_forwarded_for"';
+    access_log    "/opt/bitnami/nginx/logs/access.log" main;
+    add_header    X-Frame-Options SAMEORIGIN;
+
+    client_body_temp_path  "/opt/bitnami/nginx/tmp/client_body" 1 2;
+    proxy_temp_path        "/opt/bitnami/nginx/tmp/proxy" 1 2;
+    fastcgi_temp_path      "/opt/bitnami/nginx/tmp/fastcgi" 1 2;
+    scgi_temp_path         "/opt/bitnami/nginx/tmp/scgi" 1 2;
+    uwsgi_temp_path        "/opt/bitnami/nginx/tmp/uwsgi" 1 2;
+
+    sendfile           on;
+    tcp_nopush         on;
+    tcp_nodelay        off;
+    gzip               on;
+    gzip_http_version  1.0;
+    gzip_comp_level    2;
+    gzip_proxied       any;
+    gzip_types         text/plain text/css application/javascript text/xml application/xml+rss;
+    keepalive_timeout  65;
+    ssl_protocols      TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers        HIGH:!aNULL:!MD5;
+    client_max_body_size 80M;
+    server_tokens off;
+
+    absolute_redirect  on;
+    port_in_redirect   on;
+
+    include  "/opt/bitnami/nginx/conf/server_blocks/*.conf";
+
+    # HTTP Server
+    server {
+        # Port to listen on, can also be set in IP:PORT format
+        listen  80;
+
+        include  "/opt/bitnami/nginx/conf/bitnami/*.conf";
+
+        location /status {
+            stub_status on;
+            access_log   off;
+            allow 127.0.0.1;
+            deny all;
+        }
+    }
+}
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo nano default
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo /opt/bitnami/ctlscript.sh stop
+Stoping services..
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo service nginx restart
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+The requested nginx plugin does not appear to be installed
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ sudo cat /var/log/letsencrypt/letsencrypt.log
+2023-09-26 12:58:03,538:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 12:58:03,538:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 12:58:03,538:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 12:58:03,538:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 12:58:03,546:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 12:58:03,547:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 12:58:03,548:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 12:58:03,548:DEBUG:certbot._internal.plugins.selection:No candidate plugin
+2023-09-26 12:58:03,548:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 12:59:33,884:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 12:59:33,885:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 12:59:33,885:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 12:59:33,885:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 12:59:33,894:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 12:59:33,895:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 12:59:33,895:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 12:59:33,895:DEBUG:certbot._internal.plugins.selection:No candidate plugin
+2023-09-26 12:59:33,895:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 13:01:55,531:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 13:01:55,532:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 13:01:55,532:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 13:01:55,532:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 13:01:55,542:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 13:01:55,542:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 13:01:55,543:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 13:01:55,543:DEBUG:certbot._internal.plugins.selection:No candidate plugin
+2023-09-26 13:01:55,543:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 18:37:18,243:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 18:37:18,244:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 18:37:18,244:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 18:37:18,244:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 18:37:18,252:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 18:37:18,253:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 18:37:18,253:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 18:37:18,253:DEBUG:certbot._internal.plugins.selection:No candidate plugin
+2023-09-26 18:37:18,254:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ cd /home/pro
+-bash: cd: /home/pro: No such file or directory
+bitnami@ip-172-26-0-172:/etc/nginx/sites-available$ cd /home/bitnami/
+bitnami@ip-172-26-0-172:~$ ls
+bitnami_application_password  bitnami_credentials  dev-tools  projects  stack
+bitnami@ip-172-26-0-172:~$ sudo certbot  -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator apache, Installer apache
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): info^CExiting due to user request.
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+The requested nginx plugin does not appear to be installed
+bitnami@ip-172-26-0-172:~$ sudo apt-get install python3-certbot-nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  python3-pyparsing
+Suggested packages:
+  python-certbot-nginx-doc python-pyparsing-doc
+The following NEW packages will be installed:
+  python3-certbot-nginx python3-pyparsing
+0 upgraded, 2 newly installed, 0 to remove and 6 not upgraded.
+Need to get 144 kB of archives.
+After this operation, 512 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://cdn-aws.deb.debian.org/debian bullseye/main amd64 python3-pyparsing all 2.4.7-1 [109 kB]
+Get:2 http://cdn-aws.deb.debian.org/debian bullseye/main amd64 python3-certbot-nginx all 1.10.1-1 [35.1 kB]
+Fetched 144 kB in 0s (6,275 kB/s)           
+Selecting previously unselected package python3-pyparsing.
+(Reading database ... 54711 files and directories currently installed.)
+Preparing to unpack .../python3-pyparsing_2.4.7-1_all.deb ...
+Unpacking python3-pyparsing (2.4.7-1) ...
+Selecting previously unselected package python3-certbot-nginx.
+Preparing to unpack .../python3-certbot-nginx_1.10.1-1_all.deb ...
+Unpacking python3-certbot-nginx (1.10.1-1) ...
+Setting up python3-pyparsing (2.4.7-1) ...
+Setting up python3-certbot-nginx (1.10.1-1) ...
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: MisconfigurationError('Error while running nginx -c /etc/nginx/nginx.conf -t.\n\nnginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1\nnginx: configuration file /etc/nginx/nginx.conf test failed\n')
+bitnami@ip-172-26-0-172:~$ sudo apt update
+Hit:1 http://security.debian.org/debian-security bullseye-security InRelease
+Hit:2 http://cdn-aws.deb.debian.org/debian bullseye InRelease                  
+Get:3 http://cdn-aws.deb.debian.org/debian bullseye-updates InRelease [44.1 kB]
+Get:4 http://cdn-aws.deb.debian.org/debian bullseye-backports InRelease [49.0 kB]
+Ign:5 http://ppa.launchpad.net/certbot/certbot/ubuntu mantic InRelease
+Err:6 http://ppa.launchpad.net/certbot/certbot/ubuntu mantic Release
+  404  Not Found [IP: 2620:2d:4000:1::3e 80]
+Reading package lists... Done
+E: The repository 'http://ppa.launchpad.net/certbot/certbot/ubuntu mantic Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+bitnami@ip-172-26-0-172:~$ sudo service nginx restart
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: MisconfigurationError('Error while running nginx -c /etc/nginx/nginx.conf -t.\n\nnginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1\nnginx: configuration file /etc/nginx/nginx.conf test failed\n')
+bitnami@ip-172-26-0-172:~$ sudo apt install python3-certbot-nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+python3-certbot-nginx is already the newest version (1.10.1-1).
+0 upgraded, 0 newly installed, 0 to remove and 6 not upgraded.
+bitnami@ip-172-26-0-172:~$ sudo cerbot --nginx certonly
+sudo: cerbot: command not found
+bitnami@ip-172-26-0-172:~$ sudo apt-get update
+Hit:1 http://security.debian.org/debian-security bullseye-security InRelease
+Hit:2 http://cdn-aws.deb.debian.org/debian bullseye InRelease                                                                        
+Hit:3 http://cdn-aws.deb.debian.org/debian bullseye-updates InRelease                                                                
+Hit:4 http://cdn-aws.deb.debian.org/debian bullseye-backports InRelease                                                              
+Ign:5 http://ppa.launchpad.net/certbot/certbot/ubuntu mantic InRelease                                                               
+Err:6 http://ppa.launchpad.net/certbot/certbot/ubuntu mantic Release                                                                 
+  404  Not Found [IP: 2620:2d:4000:1::3e 80]
+Reading package lists... Done
+E: The repository 'http://ppa.launchpad.net/certbot/certbot/ubuntu mantic Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+bitnami@ip-172-26-0-172:~$ sudo apt-get install python3-certbot-nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+python3-certbot-nginx is already the newest version (1.10.1-1).
+0 upgraded, 0 newly installed, 0 to remove and 6 not upgraded.
+bitnami@ip-172-26-0-172:~$ nginx -t
+nginx: [alert] could not open error log file: open() "/opt/bitnami/nginx/logs/error.log" failed (13: Permission denied)
+2023/09/26 18:43:27 [warn] 21411#21411: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /opt/bitnami/nginx/conf/nginx.conf:2
+2023/09/26 18:43:27 [emerg] 21411#21411: cannot load certificate key "/opt/bitnami/nginx/conf/bitnami/certs/server.key": BIO_new_file() failed (SSL: error:0200100D:system library:fopen:Permission denied:fopen('/opt/bitnami/nginx/conf/bitnami/certs/server.key','r') error:2006D002:BIO routines:BIO_new_file:system lib)
+nginx: configuration file /opt/bitnami/nginx/conf/nginx.conf test failed
+bitnami@ip-172-26-0-172:~$ sudo nginx -t
+nginx: the configuration file /opt/bitnami/nginx/conf/nginx.conf syntax is ok
+nginx: configuration file /opt/bitnami/nginx/conf/nginx.conf test is successful
+bitnami@ip-172-26-0-172:~$ /etc/init.d/nginx restart
+Restarting nginx (via systemctl): nginx.service==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Authentication is required to restart 'nginx.service'.
+Authenticating as: Debian (bitnami)
+Password: 
+bitnami@ip-172-26-0-172:~$ sudo /etc/init.d/nginx restart
+Restarting nginx (via systemctl): nginx.service.
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: MisconfigurationError('Error while running nginx -c /etc/nginx/nginx.conf -t.\n\nnginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1\nnginx: configuration file /etc/nginx/nginx.conf test failed\n')
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx --nginx-server-root /usr/local/etc/nginx
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Error while running nginx -c /usr/local/etc/nginx/nginx.conf -t.
+
+nginx: [emerg] open() "/usr/local/etc/nginx/nginx.conf" failed (2: No such file or directory)
+nginx: configuration file /usr/local/etc/nginx/nginx.conf test failed
+
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: MisconfigurationError('Error while running nginx -c /usr/local/etc/nginx/nginx.conf -t.\n\nnginx: [emerg] open() "/usr/local/etc/nginx/nginx.conf" failed (2: No such file or directory)\nnginx: configuration file /usr/local/etc/nginx/nginx.conf test failed\n')
+bitnami@ip-172-26-0-172:~$ cd /usr/local/etc
+bitnami@ip-172-26-0-172:/usr/local/etc$ ls
+bitnami@ip-172-26-0-172:/usr/local/etc$ ls
+bitnami@ip-172-26-0-172:/usr/local/etc$ cd /home/bitnami/
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx --nginx-server-root
+usage: 
+  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...
+
+Certbot can obtain and install HTTPS/TLS/SSL certificates.  By default,
+it will attempt to use a webserver both for obtaining and installing the
+certificate. 
+certbot: error: argument --nginx-server-root: expected one argument
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx --nginx-server-root -d admin.vasrefil.com
+usage: 
+  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...
+
+Certbot can obtain and install HTTPS/TLS/SSL certificates.  By default,
+it will attempt to use a webserver both for obtaining and installing the
+certificate. 
+certbot: error: argument --nginx-server-root: expected one argument
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx-server-root -d admin.vasrefil.com
+usage: 
+  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...
+
+Certbot can obtain and install HTTPS/TLS/SSL certificates.  By default,
+it will attempt to use a webserver both for obtaining and installing the
+certificate. 
+certbot: error: argument --nginx-server-root: expected one argument
+bitnami@ip-172-26-0-172:~$ sudo /etc/init.d/nginx restart
+Restarting nginx (via systemctl): nginx.service.
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: MisconfigurationError('Error while running nginx -c /etc/nginx/nginx.conf -t.\n\nnginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1\nnginx: configuration file /etc/nginx/nginx.conf test failed\n')
+bitnami@ip-172-26-0-172:~$ nginx -c /etc/nginx/nginx.conf -t
+nginx: [alert] could not open error log file: open() "/opt/bitnami/nginx/logs/error.log" failed (13: Permission denied)
+2023/09/26 18:51:20 [warn] 21604#21604: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:1
+2023/09/26 18:51:20 [emerg] 21604#21604: dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+bitnami@ip-172-26-0-172:~$ sudo nginx -c /etc/nginx/nginx.conf -t
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+bitnami@ip-172-26-0-172:~$ sudo apt-get update
+Hit:1 http://cdn-aws.deb.debian.org/debian bullseye InRelease
+Hit:2 http://cdn-aws.deb.debian.org/debian bullseye-updates InRelease          
+Hit:3 http://cdn-aws.deb.debian.org/debian bullseye-backports InRelease        
+Hit:4 http://security.debian.org/debian-security bullseye-security InRelease   
+Ign:5 http://ppa.launchpad.net/certbot/certbot/ubuntu mantic InRelease         
+Err:6 http://ppa.launchpad.net/certbot/certbot/ubuntu mantic Release
+  404  Not Found [IP: 2620:2d:4000:1::3e 80]
+Reading package lists... Done
+E: The repository 'http://ppa.launchpad.net/certbot/certbot/ubuntu mantic Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+bitnami@ip-172-26-0-172:~$ sudo apt-get install certbot python-certbot-nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package python-certbot-nginx
+bitnami@ip-172-26-0-172:~$ /etc/apt/sources.list
+-bash: /etc/apt/sources.list: Permission denied
+bitnami@ip-172-26-0-172:~$ sudo /etc/apt/sources.list
+sudo: /etc/apt/sources.list: command not found
+bitnami@ip-172-26-0-172:~$ sudo cat /etc/apt/sources.list
+deb http://cdn-aws.deb.debian.org/debian bullseye main
+deb-src http://cdn-aws.deb.debian.org/debian bullseye main
+deb http://security.debian.org/debian-security bullseye-security main
+deb-src http://security.debian.org/debian-security bullseye-security main
+deb http://cdn-aws.deb.debian.org/debian bullseye-updates main
+deb-src http://cdn-aws.deb.debian.org/debian bullseye-updates main
+deb http://cdn-aws.deb.debian.org/debian bullseye-backports main
+deb-src http://cdn-aws.deb.debian.org/debian bullseye-backports main
+bitnami@ip-172-26-0-172:~$ sudo apt-get update
+Hit:1 http://cdn-aws.deb.debian.org/debian bullseye InRelease
+Hit:2 http://cdn-aws.deb.debian.org/debian bullseye-updates InRelease          
+Hit:3 http://cdn-aws.deb.debian.org/debian bullseye-backports InRelease        
+Hit:4 http://security.debian.org/debian-security bullseye-security InRelease   
+Ign:5 http://ppa.launchpad.net/certbot/certbot/ubuntu mantic InRelease         
+Err:6 http://ppa.launchpad.net/certbot/certbot/ubuntu mantic Release
+  404  Not Found [IP: 2620:2d:4000:1::3e 80]
+Reading package lists... Done
+E: The repository 'http://ppa.launchpad.net/certbot/certbot/ubuntu mantic Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+bitnami@ip-172-26-0-172:~$ sudo cat /etc/apt/sources.list.d
+cat: /etc/apt/sources.list.d: Is a directory
+bitnami@ip-172-26-0-172:~$ cd /etc/apt
+bitnami@ip-172-26-0-172:/etc/apt$ ls
+apt.conf.d  auth.conf.d  listchanges.conf  listchanges.conf.d  preferences.d  sources.list  sources.list.d  sources.list.save  trusted.gpg.d
+bitnami@ip-172-26-0-172:/etc/apt$ sudo sources.list.d/
+sudo: sources.list.d/: command not found
+bitnami@ip-172-26-0-172:/etc/apt$ sudo sources.list
+sudo: sources.list: command not found
+bitnami@ip-172-26-0-172:/etc/apt$ sudo cat sources.list.d/
+cat: sources.list.d/: Is a directory
+bitnami@ip-172-26-0-172:/etc/apt$ cd sources.list.d/
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ ls
+certbot-ubuntu-certbot-mantic.list  certbot-ubuntu-certbot-mantic.list.save
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ cd certbot-ubuntu-certbot-mantic.list
+-bash: cd: certbot-ubuntu-certbot-mantic.list: Not a directory
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ sudo cat certbot-ubuntu-certbot-mantic.list
+deb http://ppa.launchpad.net/certbot/certbot/ubuntu mantic main
+# deb-src http://ppa.launchpad.net/certbot/certbot/ubuntu mantic main
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ ls
+certbot-ubuntu-certbot-mantic.list  certbot-ubuntu-certbot-mantic.list.save
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ sudo mv certbot-ubuntu-certbot-mantic.list certbot-ubuntu-certbot-mantic.list.old
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ sudo mv certbot-ubuntu-certbot-mantic.list.save certbot-ubuntu-certbot-mantic.list.save.old
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ sudo apt-get update
+Hit:1 http://cdn-aws.deb.debian.org/debian bullseye InRelease
+Hit:2 http://cdn-aws.deb.debian.org/debian bullseye-updates InRelease
+Hit:3 http://cdn-aws.deb.debian.org/debian bullseye-backports InRelease
+Hit:4 http://security.debian.org/debian-security bullseye-security InRelease
+Reading package lists... Done
+N: Ignoring file 'certbot-ubuntu-certbot-mantic.list.save.old' in directory '/etc/apt/sources.list.d/' as it has an invalid filename extension
+N: Ignoring file 'certbot-ubuntu-certbot-mantic.list.old' in directory '/etc/apt/sources.list.d/' as it has an invalid filename extension
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ cd ..
+bitnami@ip-172-26-0-172:/etc/apt$ ls
+apt.conf.d  auth.conf.d  listchanges.conf  listchanges.conf.d  preferences.d  sources.list  sources.list.d  sources.list.save  trusted.gpg.d
+bitnami@ip-172-26-0-172:/etc/apt$ cd sources.list.d
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ ls
+certbot-ubuntu-certbot-mantic.list.old  certbot-ubuntu-certbot-mantic.list.save.old
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ ls
+certbot-ubuntu-certbot-mantic.list.old  certbot-ubuntu-certbot-mantic.list.save.old
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ 
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ 
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ cd ..
+bitnami@ip-172-26-0-172:/etc/apt$ ls
+apt.conf.d  auth.conf.d  listchanges.conf  listchanges.conf.d  preferences.d  sources.list  sources.list.d  sources.list.save  trusted.gpg.d
+bitnami@ip-172-26-0-172:/etc/apt$ sudo cp sources.list.d sources-list-d
+cp: -r not specified; omitting directory 'sources.list.d'
+bitnami@ip-172-26-0-172:/etc/apt$ sudo cp -r sources.list.d sources-list-d
+bitnami@ip-172-26-0-172:/etc/apt$ ls
+apt.conf.d  auth.conf.d  listchanges.conf  listchanges.conf.d  preferences.d  sources.list  sources-list-d  sources.list.d  sources.list.save  trusted.gpg.d
+bitnami@ip-172-26-0-172:/etc/apt$ cd sources.list.d/
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ ls
+certbot-ubuntu-certbot-mantic.list.old  certbot-ubuntu-certbot-mantic.list.save.old
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ sudo rm certbot-ubuntu-certbot-mantic.list.old
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ sudo rm certbot-ubuntu-certbot-mantic.list.save.old
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ sudo apt-get update
+Hit:1 http://security.debian.org/debian-security bullseye-security InRelease
+Hit:2 http://cdn-aws.deb.debian.org/debian bullseye InRelease
+Hit:3 http://cdn-aws.deb.debian.org/debian bullseye-updates InRelease
+Hit:4 http://cdn-aws.deb.debian.org/debian bullseye-backports InRelease
+Reading package lists... Done
+bitnami@ip-172-26-0-172:/etc/apt/sources.list.d$ cd /home/bitnami/
+bitnami@ip-172-26-0-172:~$ apt install python3-certbot-nginx
+E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
+bitnami@ip-172-26-0-172:~$ sudo apt install python3-certbot-nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+python3-certbot-nginx is already the newest version (1.10.1-1).
+0 upgraded, 0 newly installed, 0 to remove and 6 not upgraded.
+bitnami@ip-172-26-0-172:~$ sudo apt install certbot
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+certbot is already the newest version (1.12.0-2).
+0 upgraded, 0 newly installed, 0 to remove and 6 not upgraded.
+bitnami@ip-172-26-0-172:~$ sudo apt-get update
+Hit:1 http://cdn-aws.deb.debian.org/debian bullseye InRelease
+Hit:2 http://cdn-aws.deb.debian.org/debian bullseye-updates InRelease
+Hit:3 http://cdn-aws.deb.debian.org/debian bullseye-backports InRelease
+Hit:4 http://security.debian.org/debian-security bullseye-security InRelease
+Reading package lists... Done
+bitnami@ip-172-26-0-172:~$ sudo apt update
+Hit:1 http://security.debian.org/debian-security bullseye-security InRelease
+Hit:2 http://cdn-aws.deb.debian.org/debian bullseye InRelease
+Hit:3 http://cdn-aws.deb.debian.org/debian bullseye-updates InRelease
+Hit:4 http://cdn-aws.deb.debian.org/debian bullseye-backports InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+6 packages can be upgraded. Run 'apt list --upgradable' to see them.
+bitnami@ip-172-26-0-172:~$ sudo apt upgrade
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+The following packages will be upgraded:
+  libpam-systemd libsystemd0 libudev1 systemd systemd-sysv udev
+6 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 6,908 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://cdn-aws.deb.debian.org/debian bullseye-updates/main amd64 libsystemd0 amd64 247.3-7+deb11u4 [376 kB]
+Get:2 http://cdn-aws.deb.debian.org/debian bullseye-updates/main amd64 libpam-systemd amd64 247.3-7+deb11u4 [283 kB]
+Get:3 http://cdn-aws.deb.debian.org/debian bullseye-updates/main amd64 systemd amd64 247.3-7+deb11u4 [4,502 kB]
+Get:4 http://cdn-aws.deb.debian.org/debian bullseye-updates/main amd64 udev amd64 247.3-7+deb11u4 [1,464 kB]
+Get:5 http://cdn-aws.deb.debian.org/debian bullseye-updates/main amd64 libudev1 amd64 247.3-7+deb11u4 [168 kB]
+Get:6 http://cdn-aws.deb.debian.org/debian bullseye-updates/main amd64 systemd-sysv amd64 247.3-7+deb11u4 [114 kB]
+Fetched 6,908 kB in 0s (43.0 MB/s)     
+Reading changelogs... Done
+(Reading database ... 54746 files and directories currently installed.)
+Preparing to unpack .../libsystemd0_247.3-7+deb11u4_amd64.deb ...
+Unpacking libsystemd0:amd64 (247.3-7+deb11u4) over (247.3-7+deb11u2) ...
+Setting up libsystemd0:amd64 (247.3-7+deb11u4) ...
+(Reading database ... 54746 files and directories currently installed.)
+Preparing to unpack .../libpam-systemd_247.3-7+deb11u4_amd64.deb ...
+Unpacking libpam-systemd:amd64 (247.3-7+deb11u4) over (247.3-7+deb11u2) ...
+Preparing to unpack .../systemd_247.3-7+deb11u4_amd64.deb ...
+Unpacking systemd (247.3-7+deb11u4) over (247.3-7+deb11u2) ...
+Preparing to unpack .../udev_247.3-7+deb11u4_amd64.deb ...
+Unpacking udev (247.3-7+deb11u4) over (247.3-7+deb11u2) ...
+Preparing to unpack .../libudev1_247.3-7+deb11u4_amd64.deb ...
+Unpacking libudev1:amd64 (247.3-7+deb11u4) over (247.3-7+deb11u2) ...
+Setting up libudev1:amd64 (247.3-7+deb11u4) ...
+Setting up systemd (247.3-7+deb11u4) ...
+(Reading database ... 54746 files and directories currently installed.)
+Preparing to unpack .../systemd-sysv_247.3-7+deb11u4_amd64.deb ...
+Unpacking systemd-sysv (247.3-7+deb11u4) over (247.3-7+deb11u2) ...
+Setting up systemd-sysv (247.3-7+deb11u4) ...
+Setting up udev (247.3-7+deb11u4) ...
+Setting up libpam-systemd:amd64 (247.3-7+deb11u4) ...
+Processing triggers for libc-bin (2.31-13+deb11u6) ...
+Processing triggers for man-db (2.9.4-2) ...
+Processing triggers for dbus (1.12.24-0+deb11u1) ...
+Processing triggers for initramfs-tools (0.140) ...
+update-initramfs: Generating /boot/initrd.img-5.10.0-25-cloud-amd64
+bitnami@ip-172-26-0-172:~$ sudo apt-get upgrade
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+bitnami@ip-172-26-0-172:~$ sudo apt install python3-certbot-nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+python3-certbot-nginx is already the newest version (1.10.1-1).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+bitnami@ip-172-26-0-172:~$ sudo apt install certbot
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+certbot is already the newest version (1.12.0-2).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+bitnami@ip-172-26-0-172:~$ sudo nginx -t
+nginx: the configuration file /opt/bitnami/nginx/conf/nginx.conf syntax is ok
+nginx: configuration file /opt/bitnami/nginx/conf/nginx.conf test is successful
+bitnami@ip-172-26-0-172:~$ sudo service nginx status
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2023-09-26 18:50:54 UTC; 16min ago
+       Docs: man:nginx(8)
+   Main PID: 21587 (nginx)
+      Tasks: 3 (limit: 4623)
+     Memory: 3.3M
+        CPU: 35ms
+     CGroup: /system.slice/nginx.service
+             ├─21587 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+             ├─21588 nginx: worker process
+             └─21589 nginx: worker process
+
+Sep 26 18:50:54 ip-172-26-0-172 systemd[1]: Starting A high performance web server and a reverse proxy server...
+Sep 26 18:50:54 ip-172-26-0-172 systemd[1]: Started A high performance web server and a reverse proxy server.
+bitnami@ip-172-26-0-172:~$ sudo service nginx restart
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: MisconfigurationError('Error while running nginx -c /etc/nginx/nginx.conf -t.\n\nnginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1\nnginx: configuration file /etc/nginx/nginx.conf test failed\n')
+bitnami@ip-172-26-0-172:~$ sudo /etc/init.d/nginx restart
+Restarting nginx (via systemctl): nginx.service.
+bitnami@ip-172-26-0-172:~$ sudo /etc/init.d/nginx stop
+Stopping nginx (via systemctl): nginx.service.
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: MisconfigurationError('Error while running nginx -c /etc/nginx/nginx.conf -t.\n\nnginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1\nnginx: configuration file /etc/nginx/nginx.conf test failed\n')
+bitnami@ip-172-26-0-172:~$ sudo /etc/init.d/nginx restart
+Restarting nginx (via systemctl): nginx.service.
+bitnami@ip-172-26-0-172:~$ sudo /etc/init.d/nginx start
+Starting nginx (via systemctl): nginx.service.
+bitnami@ip-172-26-0-172:~$ sudo /opt/bitnami/ctlscript.sh stop
+Stoping services..
+bitnami@ip-172-26-0-172:~$ sudo /opt/bitnami/ctlscript.sh start
+Starting services..
+Job for bitnami.service failed because the control process exited with error code.
+See "systemctl status bitnami.service" and "journalctl -xe" for details.
+bitnami@ip-172-26-0-172:~$ systemctl status bitnami.service
+● bitnami.service - LSB: bitnami init script
+     Loaded: loaded (/etc/init.d/bitnami; enabled; vendor preset: enabled)
+     Active: failed (Result: exit-code) since Tue 2023-09-26 19:25:14 UTC; 23s ago
+    Process: 26741 ExecStart=/etc/init.d/bitnami start (code=exited, status=1/FAILURE)
+      Tasks: 60 (limit: 4623)
+     Memory: 370.8M
+        CPU: 1.512s
+     CGroup: /system.slice/bitnami.service
+             ├─ 1941 /opt/bitnami/gonit/bin/gonit
+             ├─26815 php-fpm: master process (/opt/bitnami/php/etc/php-fpm.conf)
+             ├─26819 php-fpm: pool www
+             ├─26820 php-fpm: pool www
+             ├─26821 php-fpm: pool www
+             ├─26822 php-fpm: pool www
+             ├─26823 php-fpm: pool www
+             ├─26824 php-fpm: pool www
+             ├─26825 php-fpm: pool www
+             ├─26826 php-fpm: pool www
+             ├─26827 php-fpm: pool www
+             ├─26828 php-fpm: pool www
+             ├─26829 php-fpm: pool www
+             ├─26830 php-fpm: pool www
+             ├─26831 php-fpm: pool www
+             ├─26832 php-fpm: pool www
+             ├─26833 php-fpm: pool www
+             ├─26834 php-fpm: pool www
+             ├─26835 php-fpm: pool www
+             ├─26836 php-fpm: pool www
+             ├─26837 php-fpm: pool www
+             ├─26838 php-fpm: pool www
+             ├─26839 php-fpm: pool www
+             ├─26840 php-fpm: pool www
+             ├─26841 php-fpm: pool www
+             ├─26842 php-fpm: pool www
+             ├─26843 php-fpm: pool www
+             ├─26844 php-fpm: pool www
+             ├─26845 php-fpm: pool www
+             ├─26846 php-fpm: pool www
+             ├─26847 php-fpm: pool www
+             ├─26848 php-fpm: pool www
+             ├─26849 php-fpm: pool www
+             ├─26850 php-fpm: pool www
+             ├─26851 php-fpm: pool www
+             ├─26852 php-fpm: pool www
+             ├─26853 php-fpm: pool www
+             ├─26854 php-fpm: pool www
+             ├─26855 php-fpm: pool www
+             ├─26856 php-fpm: pool www
+             ├─26857 php-fpm: pool www
+             ├─26858 php-fpm: pool www
+             └─26870 /opt/bitnami/mariadb/sbin/mysqld --defaults-file=/opt/bitnami/mariadb/conf/my.cnf --basedir=/opt/bitnami/mariadb --datadir=/bitnami/mariadb/data --socket=/op>
+
+Sep 26 19:25:14 ip-172-26-0-172 systemd[1]: bitnami.service: Unit process 26852 (php-fpm) remains running after unit stopped.
+Sep 26 19:25:14 ip-172-26-0-172 systemd[1]: bitnami.service: Unit process 26853 (php-fpm) remains running after unit stopped.
+Sep 26 19:25:14 ip-172-26-0-172 systemd[1]: bitnami.service: Unit process 26854 (php-fpm) remains running after unit stopped.
+
+bitnami@ip-172-26-0-172:~$ sudo service nginx status
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2023-09-26 19:14:09 UTC; 11min ago
+       Docs: man:nginx(8)
+    Process: 26650 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 26651 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+   Main PID: 26652 (nginx)
+      Tasks: 3 (limit: 4623)
+     Memory: 3.1M
+        CPU: 40ms
+     CGroup: /system.slice/nginx.service
+             ├─26652 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+             ├─26653 nginx: worker process
+             └─26654 nginx: worker process
+
+Sep 26 19:14:09 ip-172-26-0-172 systemd[1]: Starting A high performance web server and a reverse proxy server...
+Sep 26 19:14:09 ip-172-26-0-172 systemd[1]: Started A high performance web server and a reverse proxy server.
+bitnami@ip-172-26-0-172:~$ sudo service nginx restart
+bitnami@ip-172-26-0-172:~$ sudo /etc/init.d/nginx start
+Starting nginx (via systemctl): nginx.service.
+bitnami@ip-172-26-0-172:~$ sudo /etc/init.d/nginx start
+Starting nginx (via systemctl): nginx.service.
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: MisconfigurationError('Error while running nginx -c /etc/nginx/nginx.conf -t.\n\nnginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1\nnginx: configuration file /etc/nginx/nginx.conf test failed\n')
+bitnami@ip-172-26-0-172:~$ nginx -c /etc/nginx/nginx.conf -t
+nginx: [alert] could not open error log file: open() "/opt/bitnami/nginx/logs/error.log" failed (13: Permission denied)
+2023/09/26 19:27:22 [warn] 27008#27008: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:1
+2023/09/26 19:27:22 [emerg] 27008#27008: dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+bitnami@ip-172-26-0-172:~$ sudo nginx -c /etc/nginx/nginx.conf -t
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+bitnami@ip-172-26-0-172:~$ sudo systemctl restart nginx
+bitnami@ip-172-26-0-172:~$ sudo nginx -c /etc/nginx/nginx.conf -t
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+bitnami@ip-172-26-0-172:~$ sudo netstat -pant | grep -i listen
+tcp        0      0 0.0.0.0:4200            0.0.0.0:*               LISTEN      12632/node /usr/loc 
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      26870/mysqld        
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      27024/nginx: master 
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      2136/sshd: /usr/sbi 
+tcp6       0      0 :::80                   :::*                    LISTEN      27024/nginx: master 
+tcp6       0      0 :::22                   :::*                    LISTEN      2136/sshd: /usr/sbi 
+bitnami@ip-172-26-0-172:~$ sudo nano /etc/nginx/sites-available/default
+bitnami@ip-172-26-0-172:~$ sudo netstat -pant | grep -i listen
+tcp        0      0 0.0.0.0:4200            0.0.0.0:*               LISTEN      12632/node /usr/loc 
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      26870/mysqld        
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      27024/nginx: master 
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      2136/sshd: /usr/sbi 
+tcp6       0      0 :::80                   :::*                    LISTEN      27024/nginx: master 
+tcp6       0      0 :::22                   :::*                    LISTEN      2136/sshd: /usr/sbi 
+bitnami@ip-172-26-0-172:~$ sudo nginx -c /etc/nginx/nginx.conf -t
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: MisconfigurationError('Error while running nginx -c /etc/nginx/nginx.conf -t.\n\nnginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1\nnginx: configuration file /etc/nginx/nginx.conf test failed\n')
+bitnami@ip-172-26-0-172:~$ apt install libnginx-mod-http-geoip
+E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
+bitnami@ip-172-26-0-172:~$ sudo apt install libnginx-mod-http-geoip
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+libnginx-mod-http-geoip is already the newest version (1.18.0-6.1+deb11u3).
+libnginx-mod-http-geoip set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: MisconfigurationError('Error while running nginx -c /etc/nginx/nginx.conf -t.\n\nnginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1\nnginx: configuration file /etc/nginx/nginx.conf test failed\n')
+bitnami@ip-172-26-0-172:~$ sudo dpkg --configure -a
+bitnami@ip-172-26-0-172:~$ sudo rm etc/nginx/modules-enabled/50-mod-http-geoip.conf
+rm: cannot remove 'etc/nginx/modules-enabled/50-mod-http-geoip.conf': No such file or directory
+bitnami@ip-172-26-0-172:~$ sudo rm /etc/nginx/modules-enabled/50-mod-http-geoip.conf
+bitnami@ip-172-26-0-172:~$ sudo dpkg --configure -a
+bitnami@ip-172-26-0-172:~$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-image-filter.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: MisconfigurationError('Error while running nginx -c /etc/nginx/nginx.conf -t.\n\nnginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-image-filter.conf:1\nnginx: configuration file /etc/nginx/nginx.conf test failed\n')
+bitnami@ip-172-26-0-172:~$ cd /etc/nginx/modules-enabled/
+bitnami@ip-172-26-0-172:/etc/nginx/modules-enabled$ ls
+50-mod-http-image-filter.conf  50-mod-http-xslt-filter.conf  50-mod-mail.conf  50-mod-stream.conf  70-mod-stream-geoip.conf
+bitnami@ip-172-26-0-172:/etc/nginx/modules-enabled$ sudo rm 50-mod-http-image-filter.conf
+bitnami@ip-172-26-0-172:/etc/nginx/modules-enabled$ sudo rm 50-mod-http-xslt-filter.conf
+bitnami@ip-172-26-0-172:/etc/nginx/modules-enabled$ sudo rm 50-mod-mail.conf
+bitnami@ip-172-26-0-172:/etc/nginx/modules-enabled$ sudo rm 50-mod-stream.conf
+bitnami@ip-172-26-0-172:/etc/nginx/modules-enabled$ sudo rm 70-mod-stream-geoip.conf
+bitnami@ip-172-26-0-172:/etc/nginx/modules-enabled$ ls
+bitnami@ip-172-26-0-172:/etc/nginx/modules-enabled$ cd /home
+bitnami@ip-172-26-0-172:/home$ udo apt-get install nginx
+-bash: udo: command not found
+bitnami@ip-172-26-0-172:/home$ sudo apt-get install nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+nginx is already the newest version (1.18.0-6.1+deb11u3).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+bitnami@ip-172-26-0-172:/home$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): ^CExiting due to user request.
+bitnami@ip-172-26-0-172:/home$ sudo dpkg --configure -a
+bitnami@ip-172-26-0-172:/home$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): ^CExiting due to user request.
+bitnami@ip-172-26-0-172:/home$ sudo apt install nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+nginx is already the newest version (1.18.0-6.1+deb11u3).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+bitnami@ip-172-26-0-172:/home$ sudo apt update
+Hit:1 http://security.debian.org/debian-security bullseye-security InRelease
+Hit:2 http://cdn-aws.deb.debian.org/debian bullseye InRelease
+Hit:3 http://cdn-aws.deb.debian.org/debian bullseye-updates InRelease
+Hit:4 http://cdn-aws.deb.debian.org/debian bullseye-backports InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+bitnami@ip-172-26-0-172:/home$ sudo apt upgrade
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+bitnami@ip-172-26-0-172:/home$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): ^CExiting due to user request.
+bitnami@ip-172-26-0-172:/home$ sudo nginx -t
+nginx: the configuration file /opt/bitnami/nginx/conf/nginx.conf syntax is ok
+nginx: configuration file /opt/bitnami/nginx/conf/nginx.conf test is successful
+bitnami@ip-172-26-0-172:/home$ sudo service nginx restart
+bitnami@ip-172-26-0-172:/home$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): ^CExiting due to user request.
+bitnami@ip-172-26-0-172:/home$ nginx -c /etc/nginx/nginx.conf -t
+nginx: [alert] could not open error log file: open() "/opt/bitnami/nginx/logs/error.log" failed (13: Permission denied)
+2023/09/26 19:42:22 [warn] 27532#27532: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:1
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+2023/09/26 19:42:22 [emerg] 27532#27532: open() "/run/nginx.pid" failed (13: Permission denied)
+nginx: configuration file /etc/nginx/nginx.conf test failed
+bitnami@ip-172-26-0-172:/home$ sudo nginx -c /etc/nginx/nginx.conf -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+bitnami@ip-172-26-0-172:/home$ sudo service nginx status
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2023-09-26 19:41:33 UTC; 1min 15s ago
+       Docs: man:nginx(8)
+    Process: 27519 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 27520 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+   Main PID: 27521 (nginx)
+      Tasks: 3 (limit: 4623)
+     Memory: 2.0M
+        CPU: 11ms
+     CGroup: /system.slice/nginx.service
+             ├─27521 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+             ├─27522 nginx: worker process
+             └─27523 nginx: worker process
+
+Sep 26 19:41:33 ip-172-26-0-172 systemd[1]: Starting A high performance web server and a reverse proxy server...
+Sep 26 19:41:33 ip-172-26-0-172 systemd[1]: Started A high performance web server and a reverse proxy server.
+bitnami@ip-172-26-0-172:/home$ sudo nano /etc/nginx/sites-available/default
+bitnami@ip-172-26-0-172:/home$ cat # Vasrefil Admin Webapp Running on port 4200
+server {
+      # Port to listen on, can also be set in IP:PORT format
+      listen 443 ssl;
+      root /var/www/html;
+      # Catch-all server block
+      # See: https://nginx.org/en/docs/http/server_names.html#miscellaneous_names
+      server_name admin-dev.vasrefil.com;
+    ssl_certificate /etc/letsencrypt/live/admin-dev.vasrefil.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/admin-dev.vasrefil.com/privkey.pem; # managed by Certbot
+
+      location / {
+          # First attempt to serve request as file, then
+          # as directory, then fall back to displaying a 404.
+          # try_files $uri $uri/ =404; 
+          proxy_pass http://localhost:4200;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection 'upgrade';
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+      }
+
+
+^[[B
+
+^C
+-bash: server: command not found
+-bash: listen: command not found
+-bash: root: command not found
+-bash: server_name: command not found
+-bash: ssl_certificate: command not found
+-bash: ssl_certificate_key: command not found
+-bash: location: command not found
+-bash: proxy_pass: command not found
+-bash: proxy_http_version: command not found
+-bash: proxy_set_header: command not found
+-bash: proxy_set_header: command not found
+-bash: proxy_set_header: command not found
+-bash: proxy_cache_bypass: command not found
+-bash: syntax error near unexpected token `}'
+bitnami@ip-172-26-0-172:/home$ cat /etc/nginx/sites-available/default
+##
+# You should look at the following URL's in order to grasp a solid understanding
+# of Nginx configuration files in order to fully unleash the power of Nginx.
+# https://www.nginx.com/resources/wiki/start/
+# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+# https://wiki.debian.org/Nginx/DirectoryStructure
+#
+# In most cases, administrators will remove this file from sites-enabled/ and
+# leave it as reference inside of sites-available where it will continue to be
+# updated by the nginx packaging team.
+#
+# This file will automatically load configuration files provided by other
+# applications, such as Drupal or Wordpress. These applications will be made
+# available underneath a path with that package name, such as /drupal8.
+#
+# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+##
+
+# Default server configuration
+#
+
+# Vasrefil Admin Webapp Running on port 4200
+server {
+      # Port to listen on, can also be set in IP:PORT format
+      listen 80;
+      root /var/www/html;
+      # Catch-all server block
+      # See: https://nginx.org/en/docs/http/server_names.html#miscellaneous_names
+      server_name admin-dev.vasrefil.com;
+      #ssl_certificate /etc/letsencrypt/live/admin-dev.vasrefil.com/fullchain.pem; # managed by Certbot
+      #ssl_certificate_key /etc/letsencrypt/live/admin-dev.vasrefil.com/privkey.pem; # managed by Certbot
+
+      location / {
+          # First attempt to serve request as file, then
+          # as directory, then fall back to displaying a 404.
+          # try_files $uri $uri/ =404; 
+          proxy_pass http://localhost:4200;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection 'upgrade';
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+      }
+
+
+}
+
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        # SSL configuration
+        #
+        # listen 443 ssl default_server;
+        # listen [::]:443 ssl default_server;
+        #
+        # Note: You should disable gzip for SSL traffic.
+        # See: https://bugs.debian.org/773332
+        #
+        # Read up on ssl_ciphers to ensure a secure configuration.
+        # See: https://bugs.debian.org/765782
+        #
+        # Self signed certs generated by the ssl-cert package
+        # Don't use them in a production server!
+        #
+        # include snippets/snakeoil.conf;
+
+        root /var/www/html;
+
+        # Add index.php to the list if you are using PHP
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+        }
+
+        # pass PHP scripts to FastCGI server
+        #
+        #location ~ \.php$ {
+        #       include snippets/fastcgi-php.conf;
+        #
+        #       # With php-fpm (or other unix sockets):
+        #       fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        #       # With php-cgi (or other tcp sockets):
+        #       fastcgi_pass 127.0.0.1:9000;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #       deny all;
+        #}
+}
+
+
+# Virtual Host configuration for example.com
+#
+# You can move that to a different file under sites-available/ and symlink that
+# to sites-enabled/ to enable it.
+#
+#server {
+#       listen 80;
+#       listen [::]:80;
+#
+#       server_name example.com;
+#
+#       root /var/www/example.com;
+#       index index.html;
+#
+#       location / {
+#               try_files $uri $uri/ =404;
+#       }
+#}
+bitnami@ip-172-26-0-172:/home$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): ^CExiting due to user request.
+bitnami@ip-172-26-0-172:/home$ sudo nano /etc/nginx/sites-available/default
+bitnami@ip-172-26-0-172:/home$ sudo service nginx restart
+bitnami@ip-172-26-0-172:/home$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): ^CExiting due to user request.
+bitnami@ip-172-26-0-172:/home$ sudo cat /var/log/letsencrypt/letsencrypt.log
+2023-09-26 12:58:03,538:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 12:58:03,538:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 12:58:03,538:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 12:58:03,538:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 12:58:03,546:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 12:58:03,547:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 12:58:03,548:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 12:58:03,548:DEBUG:certbot._internal.plugins.selection:No candidate plugin
+2023-09-26 12:58:03,548:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 12:59:33,884:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 12:59:33,885:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 12:59:33,885:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 12:59:33,885:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 12:59:33,894:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 12:59:33,895:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 12:59:33,895:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 12:59:33,895:DEBUG:certbot._internal.plugins.selection:No candidate plugin
+2023-09-26 12:59:33,895:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 13:01:55,531:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 13:01:55,532:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 13:01:55,532:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 13:01:55,532:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 13:01:55,542:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 13:01:55,542:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 13:01:55,543:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 13:01:55,543:DEBUG:certbot._internal.plugins.selection:No candidate plugin
+2023-09-26 13:01:55,543:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 18:37:18,243:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 18:37:18,244:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 18:37:18,244:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 18:37:18,244:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 18:37:18,252:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 18:37:18,253:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 18:37:18,253:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 18:37:18,253:DEBUG:certbot._internal.plugins.selection:No candidate plugin
+2023-09-26 18:37:18,254:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 18:38:42,649:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 18:38:42,650:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 18:38:42,650:DEBUG:certbot._internal.main:Arguments: ['-d', 'admin.vasrefil.com']
+2023-09-26 18:38:42,650:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 18:38:42,659:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 18:38:42,659:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 18:38:42,660:DEBUG:certbot._internal.plugins.selection:Requested authenticator None and installer None
+2023-09-26 18:38:42,707:DEBUG:certbot_apache._internal.configurator:Apache version is 2.4.56
+2023-09-26 18:38:42,873:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * apache
+Description: Apache Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: apache = certbot_apache._internal.entrypoint:ENTRYPOINT
+Initialized: <certbot_apache._internal.override_debian.DebianConfigurator object at 0x7f248e2f1ca0>
+Prep: True
+2023-09-26 18:38:42,874:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot_apache._internal.override_debian.DebianConfigurator object at 0x7f248e2f1ca0> and installer <certbot_apache._internal.override_debian.DebianConfigurator object at 0x7f248e2f1ca0>
+2023-09-26 18:38:42,874:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator apache, Installer apache
+2023-09-26 18:38:55,922:ERROR:certbot._internal.log:Exiting due to user request.
+2023-09-26 18:39:02,818:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 18:39:02,819:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 18:39:02,819:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 18:39:02,819:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 18:39:02,828:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 18:39:02,828:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 18:39:02,829:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 18:39:02,829:DEBUG:certbot._internal.plugins.selection:No candidate plugin
+2023-09-26 18:39:02,829:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 18:40:13,887:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 18:40:13,887:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 18:40:13,887:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 18:40:13,930:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 18:40:13,951:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 18:40:13,955:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 18:40:13,958:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 18:40:13,967:ERROR:certbot.util:Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 18:40:13,968:DEBUG:certbot._internal.plugins.disco:Misconfigured PluginEntryPoint#nginx: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 928, in config_test
+    util.run_script([self.conf('ctl'), "-c", self.nginx_conf, "-t"])
+  File "/usr/lib/python3/dist-packages/certbot/util.py", line 116, in run_script
+    raise errors.SubprocessError(msg)
+certbot.errors.SubprocessError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/disco.py", line 157, in prepare
+    self._initialized.prepare()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 190, in prepare
+    self.config_test()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 930, in config_test
+    raise errors.MisconfigurationError(str(err))
+certbot.errors.MisconfigurationError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 18:40:13,969:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7ff75c2e1be0>
+Prep: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 18:40:13,969:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 18:41:28,024:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 18:41:28,024:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 18:41:28,024:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 18:41:28,046:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 18:41:28,054:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 18:41:28,054:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 18:41:28,054:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 18:41:28,061:ERROR:certbot.util:Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 18:41:28,061:DEBUG:certbot._internal.plugins.disco:Misconfigured PluginEntryPoint#nginx: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 928, in config_test
+    util.run_script([self.conf('ctl'), "-c", self.nginx_conf, "-t"])
+  File "/usr/lib/python3/dist-packages/certbot/util.py", line 116, in run_script
+    raise errors.SubprocessError(msg)
+certbot.errors.SubprocessError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/disco.py", line 157, in prepare
+    self._initialized.prepare()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 190, in prepare
+    self.config_test()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 930, in config_test
+    raise errors.MisconfigurationError(str(err))
+certbot.errors.MisconfigurationError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 18:41:28,062:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7ff7b6e6abe0>
+Prep: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 18:41:28,063:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 18:44:00,041:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 18:44:00,041:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 18:44:00,042:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 18:44:00,070:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 18:44:00,081:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 18:44:00,081:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 18:44:00,082:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 18:44:00,093:ERROR:certbot.util:Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 18:44:00,093:DEBUG:certbot._internal.plugins.disco:Misconfigured PluginEntryPoint#nginx: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 928, in config_test
+    util.run_script([self.conf('ctl'), "-c", self.nginx_conf, "-t"])
+  File "/usr/lib/python3/dist-packages/certbot/util.py", line 116, in run_script
+    raise errors.SubprocessError(msg)
+certbot.errors.SubprocessError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/disco.py", line 157, in prepare
+    self._initialized.prepare()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 190, in prepare
+    self.config_test()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 930, in config_test
+    raise errors.MisconfigurationError(str(err))
+certbot.errors.MisconfigurationError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 18:44:00,094:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f7da5439c70>
+Prep: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 18:44:00,095:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 18:46:44,409:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 18:46:44,409:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 18:46:44,409:DEBUG:certbot._internal.main:Arguments: ['--nginx', '--nginx-server-root', '/usr/local/etc/nginx']
+2023-09-26 18:46:44,427:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 18:46:44,435:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 18:46:44,435:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 18:46:44,435:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 18:46:44,442:ERROR:certbot.util:Error while running nginx -c /usr/local/etc/nginx/nginx.conf -t.
+
+nginx: [emerg] open() "/usr/local/etc/nginx/nginx.conf" failed (2: No such file or directory)
+nginx: configuration file /usr/local/etc/nginx/nginx.conf test failed
+
+2023-09-26 18:46:44,443:DEBUG:certbot._internal.plugins.disco:Misconfigured PluginEntryPoint#nginx: Error while running nginx -c /usr/local/etc/nginx/nginx.conf -t.
+
+nginx: [emerg] open() "/usr/local/etc/nginx/nginx.conf" failed (2: No such file or directory)
+nginx: configuration file /usr/local/etc/nginx/nginx.conf test failed
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 928, in config_test
+    util.run_script([self.conf('ctl'), "-c", self.nginx_conf, "-t"])
+  File "/usr/lib/python3/dist-packages/certbot/util.py", line 116, in run_script
+    raise errors.SubprocessError(msg)
+certbot.errors.SubprocessError: Error while running nginx -c /usr/local/etc/nginx/nginx.conf -t.
+
+nginx: [emerg] open() "/usr/local/etc/nginx/nginx.conf" failed (2: No such file or directory)
+nginx: configuration file /usr/local/etc/nginx/nginx.conf test failed
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/disco.py", line 157, in prepare
+    self._initialized.prepare()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 190, in prepare
+    self.config_test()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 930, in config_test
+    raise errors.MisconfigurationError(str(err))
+certbot.errors.MisconfigurationError: Error while running nginx -c /usr/local/etc/nginx/nginx.conf -t.
+
+nginx: [emerg] open() "/usr/local/etc/nginx/nginx.conf" failed (2: No such file or directory)
+nginx: configuration file /usr/local/etc/nginx/nginx.conf test failed
+
+2023-09-26 18:46:44,444:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f0a9ac83c70>
+Prep: Error while running nginx -c /usr/local/etc/nginx/nginx.conf -t.
+
+nginx: [emerg] open() "/usr/local/etc/nginx/nginx.conf" failed (2: No such file or directory)
+nginx: configuration file /usr/local/etc/nginx/nginx.conf test failed
+
+2023-09-26 18:46:44,444:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 18:51:07,286:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 18:51:07,286:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 18:51:07,286:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 18:51:07,310:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 18:51:07,319:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 18:51:07,320:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 18:51:07,320:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 18:51:07,327:ERROR:certbot.util:Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 18:51:07,327:DEBUG:certbot._internal.plugins.disco:Misconfigured PluginEntryPoint#nginx: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 928, in config_test
+    util.run_script([self.conf('ctl'), "-c", self.nginx_conf, "-t"])
+  File "/usr/lib/python3/dist-packages/certbot/util.py", line 116, in run_script
+    raise errors.SubprocessError(msg)
+certbot.errors.SubprocessError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/disco.py", line 157, in prepare
+    self._initialized.prepare()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 190, in prepare
+    self.config_test()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 930, in config_test
+    raise errors.MisconfigurationError(str(err))
+certbot.errors.MisconfigurationError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 18:51:07,328:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f6746729be0>
+Prep: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 18:51:07,329:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 19:07:30,387:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 19:07:30,387:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 19:07:30,388:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 19:07:30,410:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 19:07:30,419:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 19:07:30,419:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 19:07:30,420:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 19:07:30,427:ERROR:certbot.util:Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:07:30,427:DEBUG:certbot._internal.plugins.disco:Misconfigured PluginEntryPoint#nginx: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 928, in config_test
+    util.run_script([self.conf('ctl'), "-c", self.nginx_conf, "-t"])
+  File "/usr/lib/python3/dist-packages/certbot/util.py", line 116, in run_script
+    raise errors.SubprocessError(msg)
+certbot.errors.SubprocessError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/disco.py", line 157, in prepare
+    self._initialized.prepare()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 190, in prepare
+    self.config_test()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 930, in config_test
+    raise errors.MisconfigurationError(str(err))
+certbot.errors.MisconfigurationError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:07:30,429:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f430106fc70>
+Prep: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:07:30,429:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 19:14:05,845:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 19:14:05,847:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 19:14:05,847:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 19:14:05,871:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 19:14:05,882:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 19:14:05,883:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 19:14:05,883:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 19:14:05,891:ERROR:certbot.util:Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:14:05,891:DEBUG:certbot._internal.plugins.disco:Misconfigured PluginEntryPoint#nginx: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 928, in config_test
+    util.run_script([self.conf('ctl'), "-c", self.nginx_conf, "-t"])
+  File "/usr/lib/python3/dist-packages/certbot/util.py", line 116, in run_script
+    raise errors.SubprocessError(msg)
+certbot.errors.SubprocessError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/disco.py", line 157, in prepare
+    self._initialized.prepare()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 190, in prepare
+    self.config_test()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 930, in config_test
+    raise errors.MisconfigurationError(str(err))
+certbot.errors.MisconfigurationError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:14:05,892:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f946edc0be0>
+Prep: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:14:05,893:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 19:26:48,141:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 19:26:48,141:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 19:26:48,141:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 19:26:48,160:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 19:26:48,170:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 19:26:48,170:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 19:26:48,170:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 19:26:48,180:ERROR:certbot.util:Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:26:48,180:DEBUG:certbot._internal.plugins.disco:Misconfigured PluginEntryPoint#nginx: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 928, in config_test
+    util.run_script([self.conf('ctl'), "-c", self.nginx_conf, "-t"])
+  File "/usr/lib/python3/dist-packages/certbot/util.py", line 116, in run_script
+    raise errors.SubprocessError(msg)
+certbot.errors.SubprocessError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/disco.py", line 157, in prepare
+    self._initialized.prepare()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 190, in prepare
+    self.config_test()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 930, in config_test
+    raise errors.MisconfigurationError(str(err))
+certbot.errors.MisconfigurationError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:26:48,181:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f68b04ccc40>
+Prep: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:26:48,182:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 19:33:02,904:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 19:33:02,905:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 19:33:02,905:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 19:33:02,928:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 19:33:02,937:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 19:33:02,937:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 19:33:02,938:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 19:33:02,945:ERROR:certbot.util:Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:33:02,945:DEBUG:certbot._internal.plugins.disco:Misconfigured PluginEntryPoint#nginx: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 928, in config_test
+    util.run_script([self.conf('ctl'), "-c", self.nginx_conf, "-t"])
+  File "/usr/lib/python3/dist-packages/certbot/util.py", line 116, in run_script
+    raise errors.SubprocessError(msg)
+certbot.errors.SubprocessError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/disco.py", line 157, in prepare
+    self._initialized.prepare()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 190, in prepare
+    self.config_test()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 930, in config_test
+    raise errors.MisconfigurationError(str(err))
+certbot.errors.MisconfigurationError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:33:02,946:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fb520efec70>
+Prep: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:33:02,947:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 19:34:41,949:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 19:34:41,949:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 19:34:41,949:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 19:34:41,974:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 19:34:41,984:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 19:34:41,984:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 19:34:41,985:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 19:34:41,992:ERROR:certbot.util:Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:34:41,993:DEBUG:certbot._internal.plugins.disco:Misconfigured PluginEntryPoint#nginx: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 928, in config_test
+    util.run_script([self.conf('ctl'), "-c", self.nginx_conf, "-t"])
+  File "/usr/lib/python3/dist-packages/certbot/util.py", line 116, in run_script
+    raise errors.SubprocessError(msg)
+certbot.errors.SubprocessError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/disco.py", line 157, in prepare
+    self._initialized.prepare()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 190, in prepare
+    self.config_test()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 930, in config_test
+    raise errors.MisconfigurationError(str(err))
+certbot.errors.MisconfigurationError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:34:41,994:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f12637c1cd0>
+Prep: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:34:41,995:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 19:36:57,218:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 19:36:57,218:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 19:36:57,218:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 19:36:57,240:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 19:36:57,249:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 19:36:57,249:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 19:36:57,249:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 19:36:57,257:ERROR:certbot.util:Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-image-filter.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:36:57,258:DEBUG:certbot._internal.plugins.disco:Misconfigured PluginEntryPoint#nginx: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-image-filter.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 928, in config_test
+    util.run_script([self.conf('ctl'), "-c", self.nginx_conf, "-t"])
+  File "/usr/lib/python3/dist-packages/certbot/util.py", line 116, in run_script
+    raise errors.SubprocessError(msg)
+certbot.errors.SubprocessError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-image-filter.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/certbot/_internal/plugins/disco.py", line 157, in prepare
+    self._initialized.prepare()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 190, in prepare
+    self.config_test()
+  File "/usr/lib/python3/dist-packages/certbot_nginx/_internal/configurator.py", line 930, in config_test
+    raise errors.MisconfigurationError(str(err))
+certbot.errors.MisconfigurationError: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-image-filter.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:36:57,259:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fa947383be0>
+Prep: Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_image_filter_module.so: cannot open shared object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-image-filter.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+2023-09-26 19:36:57,259:DEBUG:certbot._internal.plugins.selection:Selected authenticator None and installer None
+2023-09-26 19:38:32,795:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 19:38:32,796:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 19:38:32,796:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 19:38:32,820:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 19:38:32,830:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 19:38:32,831:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 19:38:32,831:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 19:38:32,941:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fddc8382c70>
+Prep: True
+2023-09-26 19:38:32,942:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fddc8382c70> and installer <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fddc8382c70>
+2023-09-26 19:38:32,942:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator nginx, Installer nginx
+2023-09-26 19:38:39,498:ERROR:certbot._internal.log:Exiting due to user request.
+2023-09-26 19:40:18,607:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 19:40:18,607:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 19:40:18,607:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 19:40:18,630:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 19:40:18,638:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 19:40:18,638:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 19:40:18,638:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 19:40:18,726:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f9c1b42cc70>
+Prep: True
+2023-09-26 19:40:18,726:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f9c1b42cc70> and installer <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f9c1b42cc70>
+2023-09-26 19:40:18,726:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator nginx, Installer nginx
+2023-09-26 19:40:29,418:ERROR:certbot._internal.log:Exiting due to user request.
+2023-09-26 19:41:18,402:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 19:41:18,403:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 19:41:18,403:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 19:41:18,422:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 19:41:18,429:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 19:41:18,429:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 19:41:18,430:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 19:41:18,503:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fc3fefb6c70>
+Prep: True
+2023-09-26 19:41:18,504:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fc3fefb6c70> and installer <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fc3fefb6c70>
+2023-09-26 19:41:18,504:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator nginx, Installer nginx
+2023-09-26 19:41:19,638:ERROR:certbot._internal.log:Exiting due to user request.
+2023-09-26 19:41:36,802:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 19:41:36,802:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 19:41:36,802:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 19:41:36,823:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 19:41:36,833:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 19:41:36,833:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 19:41:36,834:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 19:41:36,924:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fe2f339ec70>
+Prep: True
+2023-09-26 19:41:36,925:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fe2f339ec70> and installer <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fe2f339ec70>
+2023-09-26 19:41:36,925:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator nginx, Installer nginx
+2023-09-26 19:41:49,383:ERROR:certbot._internal.log:Exiting due to user request.
+2023-09-26 19:45:30,673:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 19:45:30,674:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 19:45:30,674:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 19:45:30,696:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 19:45:30,704:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 19:45:30,704:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 19:45:30,704:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 19:45:30,791:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fed013c0cd0>
+Prep: True
+2023-09-26 19:45:30,792:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fed013c0cd0> and installer <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7fed013c0cd0>
+2023-09-26 19:45:30,792:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator nginx, Installer nginx
+2023-09-26 19:45:33,173:ERROR:certbot._internal.log:Exiting due to user request.
+2023-09-26 19:46:07,185:DEBUG:certbot._internal.main:certbot version: 1.12.0
+2023-09-26 19:46:07,185:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/bin/certbot
+2023-09-26 19:46:07,185:DEBUG:certbot._internal.main:Arguments: ['--nginx', '-d', 'admin.vasrefil.com']
+2023-09-26 19:46:07,216:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-09-26 19:46:07,225:DEBUG:certbot._internal.log:Root logging level set at 20
+2023-09-26 19:46:07,225:INFO:certbot._internal.log:Saving debug log to /var/log/letsencrypt/letsencrypt.log
+2023-09-26 19:46:07,226:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-09-26 19:46:07,319:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * nginx
+Description: Nginx Web Server plugin
+Interfaces: IAuthenticator, IInstaller, IPlugin
+Entry point: nginx = certbot_nginx._internal.configurator:NginxConfigurator
+Initialized: <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f204223acd0>
+Prep: True
+2023-09-26 19:46:07,320:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f204223acd0> and installer <certbot_nginx._internal.configurator.NginxConfigurator object at 0x7f204223acd0>
+2023-09-26 19:46:07,320:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator nginx, Installer nginx
+2023-09-26 19:46:09,073:ERROR:certbot._internal.log:Exiting due to user request.
+bitnami@ip-172-26-0-172:/home$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): pip install certbot-nginx^CExiting due to user request.
+bitnami@ip-172-26-0-172:/home$ pip install certbot-nginx
+-bash: pip: command not found
+bitnami@ip-172-26-0-172:/home$ sudo apt-get install python3-certbot-nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+python3-certbot-nginx is already the newest version (1.10.1-1).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+bitnami@ip-172-26-0-172:/home$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): ^CExiting due to user request.
+bitnami@ip-172-26-0-172:/home$ udo apt-get install python-certbot-nginx -t stretch-backports
+-bash: udo: command not found
+bitnami@ip-172-26-0-172:/home$ sudo apt-get install python-certbot-nginx -t stretch-backports
+Reading package lists... Done
+E: The value 'stretch-backports' is invalid for APT::Default-Release as such a release is not available in the sources
+bitnami@ip-172-26-0-172:/home$ sudo certbot --nginx -d admin.vasrefil.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): info@vasrefil.com
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf. You must
+agree in order to register with the ACME server. Do you agree?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: Y
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing, once your first certificate is successfully issued, to
+share your email address with the Electronic Frontier Foundation, a founding
+partner of the Let's Encrypt project and the non-profit organization that
+develops Certbot? We'd like to send you email about our work encrypting the web,
+EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: Y
+Account registered.
+Requesting a certificate for admin.vasrefil.com
+Performing the following challenges:
+http-01 challenge for admin.vasrefil.com
+Waiting for verification...
+Cleaning up challenges
+Deploying Certificate to VirtualHost /etc/nginx/sites-enabled/default
+Redirecting all traffic on port 80 to ssl in /etc/nginx/sites-enabled/default
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Congratulations! You have successfully enabled https://admin.vasrefil.com
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Subscribe to the EFF mailing list (email: info@vasrefil.com).
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/admin.vasrefil.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/admin.vasrefil.com/privkey.pem
+   Your certificate will expire on 2023-12-25. To obtain a new or
+   tweaked version of this certificate in the future, simply run
+   certbot again with the "certonly" option. To non-interactively
+   renew *all* of your certificates, run "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+bitnami@ip-172-26-0-172:/home$ BBBBB
