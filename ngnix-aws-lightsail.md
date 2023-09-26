@@ -127,5 +127,5 @@ Now visit https://yourdomain.com and you should see your Node app
         -Delete all config files at ```/etc/nginx/modules-enabled/*.conf``` and try to reinstall
 
 ## Reference
-[AWS Lightsail Ngnix Doc](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-using-lets-encrypt-certificates-with-nginx)
-[Error while running nginx -c /etc/nginx/nginx.conf -t Fix](https://askubuntu.com/questions/1273646/ubuntu-18-04-cant-re-install-nginx)
+- [AWS Lightsail Ngnix Doc](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-using-lets-encrypt-certificates-with-nginx)
+- [Error while running nginx -c /etc/nginx/nginx.conf -t Fix](https://askubuntu.com/questions/1273646/ubuntu-18-04-cant-re-install-nginx)
