@@ -95,6 +95,7 @@ sudo apt-get install software-properties-common
 sudo apt-add-repository ppa:certbot/certbot -y
 sudo apt-get update -y
 sudo apt-get install certbot -y
+sudo apt-get install python3-certbot-nginx
 # sudo apt-get install python-certbot-nginx
 sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
 
@@ -104,14 +105,27 @@ certbot renew --dry-run
 Now visit https://yourdomain.com and you should see your Node app
 
 ## Issues
-  - Running ``` sudo service nginx restart``` issue
+  - Running ```sudo service nginx restart``` issue
     - Error: 
       ```
       Job for nginx.service failed because the control process exited with error code.
       See "systemctl status nginx.service" and "journalctl -xe" for details.
       ```
     - Fix: ```sudo /opt/bitnami/ctlscript.sh stop ```
-
+  - Always check your ```/etc/nginx/sites-available/default``` file to be sure there is no errors.
+      - By default don't setup any service with ssl, just listen 80;   
+  - Running Error 1 ```sudo certbot --nginx -d domain.com```
+    -Error:
+        ```
+        Saving debug log to /var/log/letsencrypt/letsencrypt.log
+        Error while running nginx -c /etc/nginx/nginx.conf -t.
+        nginx: [emerg] dlopen() "/opt/bitnami/nginx/modules/ngx_http_geoip_module.so" failed (/opt/bitnami/nginx/modules/ngx_http_geoip_module.so: cannot open shared               object file: No such file or directory) in /etc/nginx/modules-enabled/50-mod-http-geoip.conf:1
+        nginx: configuration file /etc/nginx/nginx.conf test failed
+        ```
+    - Fix:
+        - Run ```sudo dpkg --configure -a```
+        -Delete all config files at ```/etc/nginx/modules-enabled/*.conf``` and try to reinstall
 
 ## Reference
 [AWS Lightsail Ngnix Doc](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-using-lets-encrypt-certificates-with-nginx)
+[Error while running nginx -c /etc/nginx/nginx.conf -t Fix](https://askubuntu.com/questions/1273646/ubuntu-18-04-cant-re-install-nginx)
